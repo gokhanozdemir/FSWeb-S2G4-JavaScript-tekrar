@@ -39,8 +39,9 @@ const sayilar = [
 function KareninAlani(kenaruzunlugu) {
   return kenaruzunlugu * kenaruzunlugu;
 }
-
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+
+console.log("G0", KareninAlani(10));
 
 /* GÖREV 1:  
 - CemberinCevresi fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -50,8 +51,9 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
+function CemberinCevresi(r) {
   /* kodlar buraya */
+  return 2 * pi * r;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,10 +66,11 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yaricap, piNr) {
+  return piNr * Math.pow(yaricap, 2);
 }
 
+console.log("G1", CemberinAlani(15, pi));
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 3:
@@ -98,28 +101,74 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
+enkucuk = sayilar[0];
+enbuyuk = sayilar[0];
 
-/* kodlar buraya */
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i];
+  }
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i];
+  }
+}
+
+console.log("G3a", "enkucuk", enkucuk, "enbuyuk", enbuyuk);
 
 // 3b çözümü:
+ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
 
-/* kodlar buraya */
+console.log("G3b", ucetambolunenler);
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((acc, sayi) => {
+  return acc + sayi;
+}, 0);
 
+console.log("G3c", ucebolunenlerintoplami);
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter((sayi) => sayi < 500);
+console.log("G3d", besyuzdenkucuksayilar);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
+console.log("G3e", siralisayilar);
+const repNumberMap = {};
+tekraredensayilar = [];
 
 // 3f çözümü
+/* 
+repNumberMap = {
+  "45": 3,
+  "12.5": 2,
+...
+};
+ */
+sayilar.forEach((sayi) => {
+  if (repNumberMap[sayi]) {
+    repNumberMap[sayi] = 1 + repNumberMap[sayi];
+  } else {
+    repNumberMap[sayi] = 1;
+  }
+});
 
-/* kodlar buraya */
+for (let enaktar in repNumberMap) {
+  if (repNumberMap[enaktar] > 1) {
+    tekraredensayilar.push(
+      `${enaktar} sayısı ${repNumberMap[enaktar]} kere tekrar edilmiştir`
+    );
+  }
+}
+
+console.log("G3f", tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
