@@ -69,6 +69,7 @@ function CemberinCevresi(r) {
 function CemberinAlani(yaricap, piNr) {
   return piNr * Math.pow(yaricap, 2);
 }
+//  sds sunum commenti
 
 console.log("G1", CemberinAlani(15, pi));
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
